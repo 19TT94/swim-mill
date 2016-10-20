@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		71AB0CBE1DB8878C00BC21B5 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 71AB0CBD1DB8878C00BC21B5 /* main.c */; };
+		71AB0CBE1DB8878C00BC21B5 /* swim_mill.c in Sources */ = {isa = PBXBuildFile; fileRef = 71AB0CBD1DB8878C00BC21B5 /* swim_mill.c */; };
+		71AB0CC61DB887B400BC21B5 /* pellet.c in Sources */ = {isa = PBXBuildFile; fileRef = 71AB0CC41DB887B400BC21B5 /* pellet.c */; };
+		71AB0CC91DB887BE00BC21B5 /* fish.c in Sources */ = {isa = PBXBuildFile; fileRef = 71AB0CC71DB887BE00BC21B5 /* fish.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +26,11 @@
 
 /* Begin PBXFileReference section */
 		71AB0CBA1DB8878C00BC21B5 /* swim-mill */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swim-mill"; sourceTree = BUILT_PRODUCTS_DIR; };
-		71AB0CBD1DB8878C00BC21B5 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		71AB0CBD1DB8878C00BC21B5 /* swim_mill.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swim_mill.c; sourceTree = "<group>"; };
+		71AB0CC41DB887B400BC21B5 /* pellet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pellet.c; sourceTree = "<group>"; };
+		71AB0CC51DB887B400BC21B5 /* pellet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pellet.h; sourceTree = "<group>"; };
+		71AB0CC71DB887BE00BC21B5 /* fish.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fish.c; sourceTree = "<group>"; };
+		71AB0CC81DB887BE00BC21B5 /* fish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fish.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +63,11 @@
 		71AB0CBC1DB8878C00BC21B5 /* swim-mill */ = {
 			isa = PBXGroup;
 			children = (
-				71AB0CBD1DB8878C00BC21B5 /* main.c */,
+				71AB0CBD1DB8878C00BC21B5 /* swim_mill.c */,
+				71AB0CC41DB887B400BC21B5 /* pellet.c */,
+				71AB0CC51DB887B400BC21B5 /* pellet.h */,
+				71AB0CC71DB887BE00BC21B5 /* fish.c */,
+				71AB0CC81DB887BE00BC21B5 /* fish.h */,
 			);
 			path = "swim-mill";
 			sourceTree = "<group>";
@@ -119,7 +129,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71AB0CBE1DB8878C00BC21B5 /* main.c in Sources */,
+				71AB0CC91DB887BE00BC21B5 /* fish.c in Sources */,
+				71AB0CBE1DB8878C00BC21B5 /* swim_mill.c in Sources */,
+				71AB0CC61DB887B400BC21B5 /* pellet.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
