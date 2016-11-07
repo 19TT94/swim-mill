@@ -7,3 +7,10 @@
 //
 
 #include "pellet.h"
+
+//Constants
+const char pellet = 'p';
+
+int main() {
+    
+}

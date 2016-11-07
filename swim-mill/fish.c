@@ -7,3 +7,10 @@
 //
 
 #include "fish.h"
+
+//Constants
+const char pellet = 'f';
+
+int main() {
+    
+}

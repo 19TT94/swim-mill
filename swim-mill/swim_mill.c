@@ -8,13 +8,15 @@
 
 #include <stdio.h>
 
+// Constants
 const char water = '~';
 const int river_length = 10;
 const int river_width = 10;
 
 // 2-D array to simulate river
-char (*river)[river_length][river_width];
+char river[river_length][river_width];
 
+// Method Prototypes
 void genRiver();
 void printRiver();
 
@@ -22,7 +24,6 @@ int main(int argc, const char * argv[]) {
     //Generate River
     genRiver();
     
-    printf("hi");
     printRiver();
     
     return 0;
@@ -31,9 +32,8 @@ int main(int argc, const char * argv[]) {
 // function that populates the river array with water
 void genRiver() {
     for(int i=0; i < river_length; i++) {
-        printf("test");
-        for(int j=0; j < river_width; j++ ) {
-            (*river)[i][j] = water;
+        for(int j=0; j < river_width; j++) {
+            (river)[i][j] = water;
         }
     }
 }
@@ -42,8 +42,12 @@ void genRiver() {
 void printRiver() {
     for(int i=0; i < river_length; i++) {
         for(int j=0; j < river_width; j++ ) {
-            printf("%c", (*river)[i][j]);
+            printf("%c", river[i][j]);
         }
-        printf("/n");
+        printf("\n");
     }
 }
+
+
+
+
