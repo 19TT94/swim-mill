@@ -7,23 +7,35 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <sys/wait.h>
+#include <stdbool.h>
+#include <signal.h>
 
 // Constants
 const char water = '~';
-const int river_length = 10;
-const int river_width = 10;
+const int river_length = 10, river_width = 10;
+// for shared memory
+const key_t key = 1738;
+int sharedMemoryID;
 
 // 2-D array to simulate river
-char river[river_length][river_width];
+char (*river)[river_length][river_width];
 
 // Method Prototypes
+void sharedMem();
 void genRiver();
 void printRiver();
 
+
 int main(int argc, const char * argv[]) {
     //Generate River
+    sharedMem();
     genRiver();
-    
     printRiver();
     
     return 0;
@@ -33,7 +45,7 @@ int main(int argc, const char * argv[]) {
 void genRiver() {
     for(int i=0; i < river_length; i++) {
         for(int j=0; j < river_width; j++) {
-            (river)[i][j] = water;
+            (*river)[i][j] = water;
         }
     }
 }
@@ -42,12 +54,25 @@ void genRiver() {
 void printRiver() {
     for(int i=0; i < river_length; i++) {
         for(int j=0; j < river_width; j++ ) {
-            printf("%c", river[i][j]);
+            printf("%c", *river[i][j]);
         }
         printf("\n");
     }
 }
 
-
+// Funciton to establish shared memory
+void sharedMem() {
+    // Create shared memory ID segment
+    if((sharedMemoryID = shmget(key, sizeof(river), IPC_CREAT | 0666)) < 0) {
+        perror("shmget");
+        exit(1);
+    }
+    
+    // Attach shared memory ID to data space
+    if((river = shmat(sharedMemoryID, NULL, 0)) == (char *) -1) {
+        perror("shmat");
+        exit(1);
+    }
+}
 
 
