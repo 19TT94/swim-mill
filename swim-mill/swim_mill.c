@@ -18,13 +18,13 @@
 
 // Constants
 const char water = '~';
-const int river_length = 10, river_width = 10;
+const int river_height = 20, river_length = 10;
 // for shared memory
-const key_t key = 1738;
+const key_t key = 1694;
 int sharedMemoryID;
 
 // 2-D array to simulate river
-char (*river)[river_length][river_width];
+char (*river)[river_height][river_length];
 
 // Method Prototypes
 void sharedMem();
@@ -43,8 +43,8 @@ int main(int argc, const char * argv[]) {
 
 // function that populates the river array with water
 void genRiver() {
-    for(int i=0; i < river_length; i++) {
-        for(int j=0; j < river_width; j++) {
+    for(int i=0; i < river_height; i++) {
+        for(int j=0; j < river_length; j++) {
             (*river)[i][j] = water;
         }
     }
@@ -52,8 +52,8 @@ void genRiver() {
 
 // function that prints river array
 void printRiver() {
-    for(int i=0; i < river_length; i++) {
-        for(int j=0; j < river_width; j++ ) {
+    for(int i=0; i < river_height; i++) {
+        for(int j=0; j < river_length; j++ ) {
             printf("%c", *river[i][j]);
         }
         printf("\n");
