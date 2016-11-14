@@ -15,6 +15,8 @@ void printRiver();
 
 
 int main(int argc, const char * argv[]) {
+    printf("This Program simulates a Swim Mill with multiple processes.");
+    
     //Generate River
     sharedMem();
     genRiver();
