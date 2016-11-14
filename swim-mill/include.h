@@ -30,7 +30,10 @@ int sharedMemoryID;
 // 2-D array to simulate river
 char (*river)[river_height][river_length];
 
-const char pellet = 'p';
-const char fish = 'f';
+const char f = '>';
+pid_t fish;
+
+const char p = '*';
+pid_t pellet;
 
 #endif /* include_h */

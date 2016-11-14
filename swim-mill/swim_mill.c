@@ -20,6 +20,12 @@ int main(int argc, const char * argv[]) {
     genRiver();
     printRiver();
     
+    // Start child processes
+    if((fish = fork()) == 0) {
+        static char *argv[] = {"","",NULL};
+        execv("/Users/TT/Desktop/", argv);
+    }
+    
     return 0;
 }
 
@@ -36,8 +42,6 @@ void genRiver() {
 void printRiver() {
     for(int i=0; i < river_height; i++) {
         for(int j=0; j < river_length; j++ ) {
-            printf("%i", i);
-            printf("%i", j);
             printf("%c", *river[i][j]);
         }
         printf("\n");
