@@ -18,7 +18,8 @@ int main(int argc, const char * argv[]) {
     printf("Swim Mill Sim\n\n");
     printf("This program simulates a fish swimming through a river with pellets causing it to change course with multiple processes.\n\n");
     
-    printf("What is the route directory to the project folder?");
+    printf("What is the route directory to the project folder?\n");
+    //ex: /users/tt/desktop/swim_mill/
     
     //Generate River
     sharedMem();
