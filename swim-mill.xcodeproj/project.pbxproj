@@ -29,6 +29,7 @@
 		71AB0CBD1DB8878C00BC21B5 /* swim_mill.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swim_mill.c; sourceTree = "<group>"; };
 		71AB0CC41DB887B400BC21B5 /* pellet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pellet.c; sourceTree = "<group>"; };
 		71AB0CC71DB887BE00BC21B5 /* fish.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fish.c; sourceTree = "<group>"; };
+		71B613CA1DD9718100B0A6E7 /* include.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = include.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +65,7 @@
 				71AB0CBD1DB8878C00BC21B5 /* swim_mill.c */,
 				71AB0CC41DB887B400BC21B5 /* pellet.c */,
 				71AB0CC71DB887BE00BC21B5 /* fish.c */,
+				71B613CA1DD9718100B0A6E7 /* include.h */,
 			);
 			path = "swim-mill";
 			sourceTree = "<group>";
