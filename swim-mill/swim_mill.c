@@ -15,7 +15,10 @@ void printRiver();
 
 
 int main(int argc, const char * argv[]) {
-    printf("This Program simulates a Swim Mill with multiple processes.");
+    printf("Swim Mill Sim\n\n");
+    printf("This program simulates a fish swimming through a river with pellets causing it to change course with multiple processes.\n\n");
+    
+    printf("What is the route directory to the project folder?");
     
     //Generate River
     sharedMem();
