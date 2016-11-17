@@ -36,4 +36,18 @@ pid_t fish;
 const char p = '*';
 pid_t pellet;
 
+void sharedMem() {
+    // Create shared memory ID segment
+    if((sharedMemoryID = shmget(key, sizeof(river), 0666)) < 0) {
+        perror("shmget");
+        exit(1);
+    }
+    
+    // Attach shared memory ID to data space
+    if ((river = shmat(sharedMemoryID, NULL, 0)) == (char *) -1) {
+        perror("shmat");
+        exit(1);
+    }
+}
+
 #endif /* include_h */
