@@ -9,7 +9,7 @@
 #include "include.h"
 
 int main() {
-    printf("PID %d (pellet) executed\n", getpid());
+    printf("PID %d (pellet) executing\n", getpid());
     
     //set up signal to kill child process
     signal(SIGINT, catchKill);

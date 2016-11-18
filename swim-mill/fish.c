@@ -9,7 +9,7 @@
 #include "include.h"
 
 int main() {
-    printf("PID %d (fish) executed\n", getpid());
+    printf("PID %d (fish) executing\n", getpid());
     
     //set up signal to kill child process
     signal(SIGINT, catchKill);
