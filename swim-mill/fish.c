@@ -13,5 +13,6 @@ int main() {
     sharedMem();
     
     printf("Fish process started\n");
+    
     return 0;
 }

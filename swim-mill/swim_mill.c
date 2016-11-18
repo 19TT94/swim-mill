@@ -25,11 +25,6 @@ int main() {
     genRiver();
     printRiver();
     
-    printf("Hey look at me: %c\n",(*river)[4][5]);
-    
-    printf("What is the route directory to the project folder?\n");
-    //ex: /users/tt/desktop/swim_mill/
-    
     // Start child processes
     fish = fork();
     if(fish == 0) {
@@ -37,8 +32,7 @@ int main() {
         execv("./fish", argv);
     }
     
-    printf("Should be fish location");
-    printf("%c", (*river)[0][1]);
+    printRiver();
     
     return 0;
 }
