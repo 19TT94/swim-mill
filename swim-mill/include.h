@@ -57,7 +57,7 @@ void catchKill() {
     
     //Detach and deallocate shared memory
     shmdt(river);
-    shctl(sharedMemoryID, IPC_RMID, 0);
+    shmctl(sharedMemoryID, IPC_RMID, 0);
     
     exit(0);
 }
