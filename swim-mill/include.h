@@ -36,7 +36,7 @@ pid_t fish;
 const char p = 'o';
 pid_t pellet;
 
-void sharedMem() {
+void attachMem() {
     // Create shared memory ID segment
     if((sharedMemoryID = shmget(key, sizeof(river), 0666)) < 0) {
         perror("shmget");
@@ -48,6 +48,18 @@ void sharedMem() {
         perror("shmat");
         exit(1);
     }
+}
+
+void catchKill() {
+    //Kill child processes
+    kill(fish, SIGINT);
+    kill(pellet, SIGINT);
+    
+    //Detach and deallocate shared memory
+    shmdt(river);
+    shctl(sharedMemoryID, IPC_RMID, 0);
+    
+    exit(0);
 }
 
 #endif /* include_h */

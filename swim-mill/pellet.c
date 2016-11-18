@@ -9,8 +9,13 @@
 #include "include.h"
 
 int main() {
+    printf("PID %d (pellet) executed\n", getpid());
     
-    sharedMem();
+    //set up signal to kill child process
+    signal(SIGINT, catchKill);
+    
+    //attach process to shared memory
+    attachMem();
     
     printf("Pellet process started\n");
     
