@@ -19,5 +19,7 @@ int main() {
     
     printf("Pellet process started\n");
     
+    (*river)[0][1] = p;
+    
     return 0;
 }

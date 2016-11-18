@@ -25,11 +25,19 @@ int main() {
     genRiver();
     printRiver();
     
-    // Start child processes
+    // Start fish processe
     fish = fork();
     if(fish == 0) {
         static char *argv[] = {"","",NULL};
         execv("./fish", argv);
+    }
+    //Start pellet process
+    else if(pellet == 0) {
+        static char *argv[] = {"","",NULL};
+        execv("./pellet", argv);
+    }
+    else {
+        
     }
     
     printRiver();
