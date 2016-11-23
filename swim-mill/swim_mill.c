@@ -37,10 +37,8 @@ int main() {
         execv("./pellet", argv);
     }
     else {
-        
+        printRiver();
     }
-    
-    printRiver();
     
     return 0;
 }

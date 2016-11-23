@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
@@ -30,7 +31,7 @@ int sharedMemoryID;
 // 2-D array to simulate river
 char (*river)[river_height][river_length];
 
-const char f = 'V';
+const char f = '^';
 pid_t fish;
 
 const char p = 'o';
