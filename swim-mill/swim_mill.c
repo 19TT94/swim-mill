@@ -12,7 +12,9 @@
 void createMem();
 void genRiver();
 void printRiver();
+void terminate();
 
+const int limit = 30;
 
 int main() {
     printf("Swim Mill Sim\n\n");
@@ -37,7 +39,13 @@ int main() {
         execv("./pellet", argv);
     }
     else {
-        printRiver();
+        // Run fish and pellet processes for timeLimit seconds
+        for(int seconds = limit; seconds >= 0; seconds--) {
+            //printf("%d seconds remaining\n", seconds);
+            sleep(1);
+            printRiver();
+        }
+        terminate();
     }
     
     return 0;
@@ -78,4 +86,16 @@ void createMem() {
     }
 }
 
+void terminate() {
+    //Kill child processes
+    kill(fish, SIGUSR1);
+    kill(pellet, SIGUSR1);
+    
+    //Detach and deallocate shared memory
+    shmdt(river);
+    shmctl(sharedMemoryID, IPC_RMID, 0);
+    
+    printf("memory deallocated and processes killed\n");
+    exit(0);
+}
 
