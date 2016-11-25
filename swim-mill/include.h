@@ -60,7 +60,7 @@ void catchKill() {
     shmdt(river);
     shmctl(sharedMemoryID, IPC_RMID, 0);
     
-    printf("memory deallocated and processes killed\n");
+    printf("\n\nmemory deallocated and processes killed\n");
     exit(0);
 }
 

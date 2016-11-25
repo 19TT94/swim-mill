@@ -46,6 +46,8 @@ int main() {
     pthread_join(pool[max-1], NULL);
     shmdt(river);
     
+    printf("hello pellet");
+    
     exit(0);
 }
 

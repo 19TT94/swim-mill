@@ -23,8 +23,10 @@ int main() {
     
     while(1) {
         int * pellet = findPellet();
-        
+        break;
     }
+    
+    printf("hello fish");
     
     return 0;
 }
