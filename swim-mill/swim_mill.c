@@ -33,23 +33,23 @@ int main() {
         static char *argv[] = {"","",NULL};
         execv("./fish", argv);
     }
-    //Start pellet process
-    else if(pellet == 0) {
-        static char *argv[] = {"","",NULL};
-        execv("./pellet", argv);
-    }
     else {
-        // Run fish and pellet processes for timeLimit seconds
-        for(int seconds = limit; seconds >= 0; seconds--) {
-            printf("%d seconds remaining\n", seconds);
-            sleep(1);
-            printRiver();
+        //Start pellet process
+        pellet = fork();
+        if(pellet == 0) {
+            static char *argv[] = {"","",NULL};
+            execv("./pellet", argv);
         }
-        terminate();
+        else {
+            // Run fish and pellet processes for timeLimit seconds
+            for(int seconds = limit; seconds >= 0; seconds--) {
+                printf("%d seconds remaining\n", seconds);
+                sleep(1);
+                printRiver();
+            }
+            terminate();
+        }
     }
-    printRiver();
-    
-    terminate();
     
     return 0;
 }
