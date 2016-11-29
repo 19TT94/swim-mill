@@ -45,11 +45,9 @@ int main() {
         int loc[2] = {x,y};
         pthread_create(&pool[i], NULL, pellets, loc);
     }
-    printf("I'm done");
     
     pthread_join(pool[i], NULL);
     shmdt(river);
-    printf("goodbye\n");
     
     return 0;
 }
@@ -71,8 +69,15 @@ static int *pellets(int *loc) {
         
         //move pellet down river
         x++;
-        (*river)[x][y] = p;
+        if((*river)[x][y] != f) {
+            (*river)[x][y] = p;
+        }
     }
-    printf("Goodbye pellet, I reached %i\n", x);
+    
+    sleep(1);
+    if((*river)[x][y] != f) {
+        (*river)[x][y] = water;
+    }
+    
     return 0;
 }

@@ -15,7 +15,7 @@ int current = (river_length/2);
 int count = 0;
 
 int * findPellet();
-bool eaten(int *, int *);
+bool eaten(int, int);
 void moveFishRight();
 void moveFishLeft();
 
@@ -30,27 +30,24 @@ int main() {
     
     printf("Fish process started\n");
     (*river)[river_height-1][river_length/2] = f;
+    while(1) {
     
-    int *x, *y;
-    while(eaten(x,y) == false) {
-        sleep(1);
         int * pellet = findPellet();
-        
-        x = pellet;
-        y = pellet+1;
-        
-        // check for pellet above fish
-        if (*x == current) {
+    
+        int x = *pellet;
+        int y = *(pellet+1);
+        while(eaten(x,y) == false /* and while the pellet is still in the river*/) {
             sleep(1);
-            eaten(x,y);
-        }
-        else if(*x > current) {
-            moveFishRight();
-            eaten(x,y);
-        }
-        else {
-            moveFishLeft();
-            eaten(x,y);
+            // check for pellet above fish
+            if (y == current) { // fish is above of pellet
+                //do nothing
+            }
+            else if(y > current) { // fish is to the left of pellet
+                moveFishRight();
+            }
+            else {
+                moveFishLeft();
+            }
         }
     }
     
@@ -72,10 +69,10 @@ int * findPellet() {
 }
 
 
-//fix
-bool eaten(int * x, int * y) {
-    if((*river)[*x][*y] == current) {
+bool eaten(int x, int y) {
+    if(y == current && x == (river_height-1)) {
         count++;
+        (*river)[current][river_height]; //make sure fish isn't overridden
         return true;
     }
     return false;
