@@ -61,7 +61,6 @@ void genRiver() {
             (*river)[i][j] = water;
         }
     }
-    (*river)[river_height-1][river_length/2] = f;
 }
 
 // function that prints river array

@@ -23,7 +23,7 @@
 
 // Constants
 const char water = '~';
-const int river_height = 10, river_length = 10;
+const int river_height = 10, river_length = 11;
 // for shared memory
 const key_t key = 1694;
 int sharedMemoryID;

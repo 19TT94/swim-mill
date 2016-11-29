@@ -29,6 +29,7 @@ int main() {
     attachMem();
     
     printf("Fish process started\n");
+    (*river)[river_height-1][river_length/2] = f;
     
     int *x, *y;
     while(eaten(x,y) == false) {
@@ -39,11 +40,11 @@ int main() {
         y = pellet+1;
         
         // check for pellet above fish
-        if (x == current) {
+        if (*x == current) {
             sleep(1);
             eaten(x,y);
         }
-        else if(x > current) {
+        else if(*x > current) {
             moveFishRight();
             eaten(x,y);
         }
@@ -52,8 +53,6 @@ int main() {
             eaten(x,y);
         }
     }
-    
-    printf("\nhello fish\n");
     
     return 0;
 }
@@ -75,7 +74,7 @@ int * findPellet() {
 
 //fix
 bool eaten(int * x, int * y) {
-    if((*river)[(int) x][(int) y] == (int) current) {
+    if((*river)[*x][*y] == current) {
         count++;
         return true;
     }
