@@ -31,12 +31,17 @@ int main() {
     for(int i=0; i < max; i++) {
         sleep(1);
         
-        int x = 0;
-        int y = 0;
+        int x = rand()%8+1;
+        int y = rand()%8+1;
+        printf("ploc1 %i", x);
+        printf("ploc2 %i", y);
         while((*river)[x][y] != 'o') {
             x = rand()%8+1;
-            x = rand()%8+1;
+            y = rand()%8+1;
         }
+        
+        printf("ploc1 %i", x);
+        printf("ploc2 %i", y);
         
         //take random location created and create pellet threads
         int loc[2] = {x,y};
