@@ -15,7 +15,7 @@ int current = (river_length/2);
 int count = 0;
 
 int * findPellet();
-bool eat(int *, int *);
+bool eaten(int *, int *);
 void moveFishRight();
 void moveFishLeft();
 
@@ -31,11 +31,9 @@ int main() {
     printf("Fish process started\n");
     
     int *x, *y;
-    while(1) {
+    while(eaten(x,y) == false) {
         sleep(1);
         int * pellet = findPellet();
-        printf("\nloc1 %d", pellet);
-        printf("\nloc2 %d", (pellet+1));
         
         x = pellet;
         y = pellet+1;
@@ -43,19 +41,16 @@ int main() {
         // check for pellet above fish
         if (x == current) {
             sleep(1);
+            eaten(x,y);
         }
         else if(x > current) {
             moveFishRight();
+            eaten(x,y);
         }
         else {
             moveFishLeft();
+            eaten(x,y);
         }
-        
-        if(eat(x,y) == true) {
-            break;
-        }
-        
-        break;
     }
     
     printf("\nhello fish\n");
@@ -79,7 +74,7 @@ int * findPellet() {
 
 
 //fix
-bool eat(int * x, int * y) {
+bool eaten(int * x, int * y) {
     if((*river)[(int) x][(int) y] == (int) current) {
         count++;
         return true;

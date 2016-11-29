@@ -27,7 +27,7 @@ int main() {
     genRiver();
     printRiver();
     
-    // Start fish processe
+    // Start fish process
     fish = fork();
     if(fish == 0) {
         static char *argv[] = {"","",NULL};
