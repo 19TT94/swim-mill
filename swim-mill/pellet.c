@@ -28,7 +28,8 @@ int main() {
     // generate pellet threads
     pthread_t pool[max];
     
-    for(int i=0; i < 2; i++) {
+    int i;
+    for(i=0; i < max; i++) {
         sleep(1);
         
         //get inital value for pellet
@@ -44,9 +45,11 @@ int main() {
         int loc[2] = {x,y};
         pthread_create(&pool[i], NULL, pellets, loc);
     }
+    printf("I'm done");
     
-    pthread_join(pool[max-1], NULL);
+    pthread_join(pool[i], NULL);
     shmdt(river);
+    printf("goodbye\n");
     
     return 0;
 }
@@ -55,18 +58,21 @@ static int *pellets(int *loc) {
     //get pellet position
     int x = *loc;
     int y = *(loc + 1);
-
+    
     //drop pellet
     (*river)[x][y] = p;
-    sleep(1);
     
     // move the pellet down the river
-    while(y < river_length) {
+    while(x < river_height-1) {
+        //printf("Hey is at [%i,%i]\n",x,y);
+        sleep(1);
         // update previous pellet location
         (*river)[x][y] = water;
+        
         //move pellet down river
         x++;
         (*river)[x][y] = p;
     }
+    printf("Goodbye pellet, I reached %i\n", x);
     return 0;
 }
