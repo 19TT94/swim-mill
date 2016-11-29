@@ -41,12 +41,15 @@ int main() {
     else {
         // Run fish and pellet processes for timeLimit seconds
         for(int seconds = limit; seconds >= 0; seconds--) {
-            //printf("%d seconds remaining\n", seconds);
+            printf("%d seconds remaining\n", seconds);
             sleep(1);
             printRiver();
         }
         terminate();
     }
+    printRiver();
+    
+    terminate();
     
     return 0;
 }

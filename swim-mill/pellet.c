@@ -31,29 +31,33 @@ int main() {
     for(int i=0; i < max; i++) {
         sleep(1);
         
+        //get inital value for pellet
         int x = rand()%8+1;
         int y = rand()%8+1;
-        printf("ploc1 %i", x);
-        printf("ploc2 %i", y);
-        while((*river)[x][y] != p && (*river)[x][y] != f) {
-            x = rand()%8+1;
-            y = rand()%8+1;
-        }
+        printf("\nploc1 %i", x);
+        printf("\nploc2 %i", y);
+        //make sure pellet can be placed at this place in the river
+        //while((*river)[x][y] != water) {
+            //x = rand()%8+1;
+           // y = rand()%8+1;
+        //}
         
-        printf("ploc1 %i", x);
-        printf("ploc2 %i", y);
+        printf("\nploc3 %i", x);
+        printf("\nploc4 %i", y);
         
         //take random location created and create pellet threads
         int loc[2] = {x,y};
         pthread_create(&pool[i], NULL, pellets, loc);
     }
     
+    printf("\ncheck 1: hello pellet\n");
+    
     pthread_join(pool[max-1], NULL);
     shmdt(river);
     
-    printf("hello pellet");
+    printf("hello pellet\n");
     
-    exit(0);
+    return 0;
 }
 
 static void *pellets(int *loc) {
@@ -61,18 +65,18 @@ static void *pellets(int *loc) {
     int x = *loc;
     int y = *(loc + 1);
     
-    // check if pellet has been eaten
-    while(x != river_height || (*river)[river_length][river_height] == f) {
-        // drop pellet in river
-        (*river)[x][y] = p;
-        //wait and move pellet down river
-        sleep(1);
+    //drop pellet
+    (*river)[x][y] = p;
+    sleep(1);
+    
+    // move the pellet down the river
+    while(y < river_height) {
+        // update previous pellet location
+        (*river)[x][y] = water;
+        //move pellet down river
         y++;
-        
-        //update contents of previous index
-        if((*river)[x][y] != f) {
-            (*river)[x][y] = water;
-        }
+        (*river)[x][y] = p;
     }
+    //should be void but ...
     return 0;
 }

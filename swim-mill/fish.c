@@ -34,8 +34,8 @@ int main() {
     while(1) {
         sleep(1);
         int * pellet = findPellet();
-        printf("loc1 %d", pellet);
-        printf("loc2 %d", (pellet+1));
+        printf("\nloc1 %d", pellet);
+        printf("\nloc2 %d", (pellet+1));
         
         x = pellet;
         y = pellet+1;
@@ -58,7 +58,7 @@ int main() {
         break;
     }
     
-    printf("hello fish");
+    printf("\nhello fish\n");
     
     return 0;
 }
