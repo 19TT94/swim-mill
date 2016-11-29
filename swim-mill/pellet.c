@@ -35,7 +35,7 @@ int main() {
         int y = rand()%8+1;
         printf("ploc1 %i", x);
         printf("ploc2 %i", y);
-        while((*river)[x][y] != 'o') {
+        while((*river)[x][y] != p && (*river)[x][y] != f) {
             x = rand()%8+1;
             y = rand()%8+1;
         }
