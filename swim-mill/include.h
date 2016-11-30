@@ -37,6 +37,9 @@ pid_t fish;
 const char p = 'o';
 pid_t pellet;
 
+// counter for eaten pellets
+int eaten;
+
 void attachMem() {
     // Create shared memory ID segment
     if((sharedMemoryID = shmget(key, sizeof(river), 0666)) < 0) {

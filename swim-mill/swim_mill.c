@@ -47,6 +47,7 @@ int main() {
                 sleep(1);
                 printRiver();
             }
+            printf("\nNumber of eaten pellets: %i", eaten);
             terminate();
         }
     }

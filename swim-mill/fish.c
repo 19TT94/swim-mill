@@ -11,11 +11,8 @@
 //current fish location
 int current = (river_length/2);
 
-// count of eaten pellets
-int count = 0;
-
 int * findPellet();
-bool eaten(int, int);
+bool eat(int, int);
 void moveFishRight();
 void moveFishLeft();
 
@@ -29,24 +26,35 @@ int main() {
     attachMem();
     
     printf("Fish process started\n");
+    printf("hi");
     (*river)[river_height-1][river_length/2] = f;
+    printf("hello");
     while(1) {
-    
+        printf("hi");
         int * pellet = findPellet();
-    
+        printf("bye");
         int x = *pellet;
         int y = *(pellet+1);
-        while(eaten(x,y) == false /* and while the pellet is still in the river*/) {
+        
+        printf("hey %i %i\n",x,y);
+        
+        printf(" lks d ls ds ll sd kd sl\n");
+        
+        while(eat(x,y) == false && y < (river_height-1)/* and while the pellet is still in the river*/) {
+            printf("jslkjfa;ls dfkja;lsd fja;lsdf\n");
             sleep(1);
             // check for pellet above fish
             if (y == current) { // fish is above of pellet
                 //do nothing
+                printf("hi");
             }
             else if(y > current) { // fish is to the left of pellet
                 moveFishRight();
+                printf("hey");
             }
             else {
                 moveFishLeft();
+                printf("hello)");
             }
         }
     }
@@ -55,7 +63,7 @@ int main() {
 }
 
 int * findPellet() {
-    int loc[2];
+    static int loc[2];
     for(int i=0; i < river_height; i++) {
         for(int j=0; j < river_length; j++ ) {
             if((*river)[i][j] == p) {
@@ -69,10 +77,11 @@ int * findPellet() {
 }
 
 
-bool eaten(int x, int y) {
+bool eat(int x, int y) {
     if(y == current && x == (river_height-1)) {
-        count++;
-        (*river)[current][river_height]; //make sure fish isn't overridden
+        printf("Pellet Eaten\n");
+        eaten++;
+        (*river)[current][river_height-1] = f; //make sure fish isn't overridden
         return true;
     }
     return false;
@@ -80,13 +89,13 @@ bool eaten(int x, int y) {
 
 void moveFishRight() {
     (*river)[9][current] = water;
-    current += current;
+    current++;
     (*river)[9][current] = f;
     
 }
 
 void moveFishLeft() {
     (*river)[9][current] = water;
-    current += current;
+    current++;
     (*river)[9][current] = f;
 }
