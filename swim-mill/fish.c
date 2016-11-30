@@ -90,6 +90,6 @@ void moveFishRight() {
 
 void moveFishLeft() {
     (*river)[9][current] = water;
-    current++;
+    current--;
     (*river)[9][current] = fish;
 }
