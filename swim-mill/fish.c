@@ -29,12 +29,12 @@ int main() {
     (*river)[river_height-1][river_length/2] = fish;
     while(1) {
         int * plocation = findPellet();
-        printf("hi\n");
-        printf("ploc %d\n", *(plocation));
-        int x = *(plocation);
-        printf("x: %d\n", x);
+        if(plocation == 0) {
+            sleep(1);
+            continue;
+        }
+        int x = *plocation;
         int y = *(plocation+1);
-        printf("y: %d\n", y);
         
         printf("hey %d %d\n",x,y);
         
@@ -43,15 +43,12 @@ int main() {
             // check for pellet above fish
             if (y == current) { // fish is above of pellet
                 //do nothing
-                printf("hi");
             }
             else if(y > current) { // fish is to the left of pellet
                 moveFishRight();
-                printf("hey");
             }
             else {
                 moveFishLeft();
-                printf("ho)");
             }
         }
     }

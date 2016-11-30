@@ -28,7 +28,7 @@ int main() {
     pthread_t pool[max];
     
     int i;
-    for(i=0; i < max; i++) {
+    for(i=0; i < 2; i++) {
         sleep(1);
         
         //get inital value for pellet
@@ -40,12 +40,14 @@ int main() {
             y = rand()%8+1;
         }
         
+        //printf("x,y: %d,%d\n", x,y);
+        
         //take random location created and create pellet threads
         int loc[2] = {x,y};
         pthread_create(&pool[i], NULL, pellets, loc);
     }
     
-    pthread_join(pool[i], NULL);
+    pthread_join(pool[1], NULL);
     shmdt(river);
     
     return 0;
@@ -67,7 +69,7 @@ static int *pellets(int *loc) {
         (*river)[x][y] = water;
         
         //move pellet down river
-        x++;
+        //x++;
         if((*river)[x][y] != fish) {
             (*river)[x][y] = pellet;
         }
