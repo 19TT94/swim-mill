@@ -38,31 +38,33 @@ int main() {
         
         printf("hey %d %d\n",x,y);
         
-        while(eat(x,y) == false && y < (river_height-1)/* and while the pellet is still in the river*/) {
+        while(eat(x,y) == false /* and while the pellet is still in the river*/) {
+            printf("bool: %d\n", eat(x,y));
             sleep(1);
-            // check for pellet above fish
-            if (y == current) { // fish is above of pellet
-                //do nothing
-            }
-            else if(y > current) { // fish is to the left of pellet
+            // use position of pellet to determine where the fish goes
+            if(y > current) { // fish is to the left of pellet
                 moveFishRight();
             }
-            else {
+            else if(y < current) { //fish is to the right of the pellet
                 moveFishLeft();
             }
         }
+        sleep(1);
+        eaten++;
     }
     
     return 0;
 }
 
 int * findPellet() {
+    
     static int loc[2];
     for(int i=0; i < river_height; i++) {
         for(int j=0; j < river_length; j++ ) {
             if((*river)[i][j] == pellet) {
                 loc[0] = i;
                 loc[1] = j;
+                printf("found pellet at %d, %d\n", i , j);
                 return loc;
             }
         }
@@ -72,10 +74,10 @@ int * findPellet() {
 
 
 bool eat(int x, int y) {
-    if(y == current && x == (river_height-1)) {
+    //if(x == (river_height-1) && y == current) {
+    if((*river)[river_height-2][current] == pellet) {
         printf("Pellet Eaten\n");
-        eaten++;
-        (*river)[current][river_height-1] = fish; //make sure fish isn't overridden
+        (*river)[river_height-1][current] = fish; //make sure fish isn't overridden
         return true;
     }
     return false;

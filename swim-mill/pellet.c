@@ -62,7 +62,7 @@ static int *pellets(int *loc) {
     (*river)[x][y] = pellet;
     
     // move the pellet down the river
-    while(x < river_height-1) {
+    while(x < (river_height-1)) {
         sleep(1);
         // update previous pellet location
         (*river)[x][y] = water;

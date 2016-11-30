@@ -23,7 +23,7 @@
 
 // Constants
 const char water = '~';
-const int river_height = 10, river_length = 11;
+const int river_height = 10, river_length = 10;
 // for shared memory
 const key_t key = 1694;
 int sharedMemoryID;
@@ -38,7 +38,7 @@ const char pellet = 'o';
 pid_t pelletController;
 
 // counter for eaten pellets
-int eaten;
+int eaten = 0;
 
 void attachMem() {
     // Create shared memory ID segment
