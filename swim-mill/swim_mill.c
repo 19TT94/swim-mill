@@ -17,7 +17,7 @@ void terminate();
 const int limit = 30;
 
 int main() {
-    printf("Swim Mill Sim\n\n");
+    printf("Swim Mill Simulation\n\n");
     printf("This program simulates a fish swimming through a river with pellets causing it to change course with multiple processes.\n\n");
     
     printf("River's intitial state\n");
@@ -28,15 +28,15 @@ int main() {
     printRiver();
     
     // Start fish process
-    fish = fork();
-    if(fish == 0) {
+    fishController = fork();
+    if(fishController == 0) {
         static char *argv[] = {"","",NULL};
         execv("./fish", argv);
     }
     else {
         //Start pellet process
-        pellet = fork();
-        if(pellet == 0) {
+        pelletController = fork();
+        if(pelletController == 0) {
             static char *argv[] = {"","",NULL};
             execv("./pellet", argv);
         }
@@ -91,8 +91,8 @@ void createMem() {
 
 void terminate() {
     //Kill child processes
-    kill(fish, SIGUSR1);
-    kill(pellet, SIGUSR1);
+    kill(fishController, SIGUSR1);
+    kill(pelletController, SIGUSR1);
     
     //Detach and deallocate shared memory
     shmdt(river);

@@ -31,11 +31,11 @@ int sharedMemoryID;
 // 2-D array to simulate river
 char (*river)[river_height][river_length];
 
-const char f = '^';
-pid_t fish;
+const char fish = '^';
+pid_t fishController;
 
-const char p = 'o';
-pid_t pellet;
+const char pellet = 'o';
+pid_t pelletController;
 
 // counter for eaten pellets
 int eaten;
@@ -56,8 +56,8 @@ void attachMem() {
 
 void catchKill() {
     //Kill child processes
-    kill(fish, SIGINT);
-    kill(pellet, SIGINT);
+    kill(fishController, SIGINT);
+    kill(pelletController, SIGINT);
     
     //Detach and deallocate shared memory
     shmdt(river);

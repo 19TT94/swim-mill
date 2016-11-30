@@ -19,8 +19,7 @@ int main() {
     
     //attach process to shared memory
     attachMem();
-    
-    printf("Pellet process started\n");
+    printf("Memory Attached in Pellet\n");
     
     // random seed
     srand(time(NULL));
@@ -58,7 +57,7 @@ static int *pellets(int *loc) {
     int y = *(loc + 1);
     
     //drop pellet
-    (*river)[x][y] = p;
+    (*river)[x][y] = pellet;
     
     // move the pellet down the river
     while(x < river_height-1) {
@@ -69,13 +68,13 @@ static int *pellets(int *loc) {
         
         //move pellet down river
         x++;
-        if((*river)[x][y] != f) {
-            (*river)[x][y] = p;
+        if((*river)[x][y] != fish) {
+            (*river)[x][y] = pellet;
         }
     }
     
     sleep(1);
-    if((*river)[x][y] != f) {
+    if((*river)[x][y] != fish) {
         (*river)[x][y] = water;
     }
     
