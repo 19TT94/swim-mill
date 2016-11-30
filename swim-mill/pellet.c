@@ -9,7 +9,7 @@
 #include "include.h"
 
 static int *pellets(int*);
-static int max = 20, active = 15;
+static int max = 30;
 
 int main() {
     printf("PID %d (pellet) executing\n", getpid());
