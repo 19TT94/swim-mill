@@ -35,11 +35,8 @@ int main() {
         }
         int x = *plocation;
         int y = *(plocation+1);
-        
-        printf("hey %d %d\n",x,y);
-        
+                
         while(eat(x,y) == false /* and while the pellet is still in the river*/) {
-            printf("bool: %d\n", eat(x,y));
             sleep(1);
             // use position of pellet to determine where the fish goes
             if(y > current) { // fish is to the left of pellet
@@ -65,7 +62,6 @@ int * findPellet() {
             if((*river)[i][j] == pellet) {
                 loc[0] = i;
                 loc[1] = j;
-                printf("found pellet at %d, %d\n", i , j);
                 return loc;
             }
         }
