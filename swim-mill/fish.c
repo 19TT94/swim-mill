@@ -51,6 +51,7 @@ int main() {
         }
         sleep(1);
         eaten++;
+        printf("Pellet Eaten | count: %d\n", eaten);
     }
     
     return 0;
@@ -76,7 +77,6 @@ int * findPellet() {
 bool eat(int x, int y) {
     //if(x == (river_height-1) && y == current) {
     if((*river)[river_height-2][current] == pellet) {
-        printf("Pellet Eaten\n");
         (*river)[river_height-1][current] = fish; //make sure fish isn't overridden
         return true;
     }
